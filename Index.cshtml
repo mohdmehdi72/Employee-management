@@ -1,0 +1,68 @@
+﻿@model List<EmployeeManagement.Data.Employee>
+@{
+    Layout = null;
+
+    ViewData["Title"] = "Home Page";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css" />
+    <title>@ViewData["Title"]</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,500&amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="~/css/dataTables/IndexCSS.css" rel="stylesheet" />
+    <style>
+        html {
+            font-size: 14px;
+        }
+
+        .container {
+            font-size: 14px;
+            color: #666666;
+            font-family: "Open Sans";
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">Home</li>
+            </ol>
+        </nav>
+        @*<br />
+        <h1 class="h1">Employees List</h1>
+        <hr />*@
+        <div class="row pt-5 m-auto">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6 col-lg-4 pb-3">
+                    <div class="card card-custom bg-white border-white border-0">
+                        <div class="card-custom-img" style="background-image: url(http://res.cloudinary.com/d3/image/upload/c_scale,q_auto:good,w_1110/trianglify-v1-cs85g_cc5d2i.jpg);"></div>
+                        <div class="card-custom-avatar">
+                            <img class="img-fluid" src="@item.ImgUrl" alt="Avatar" />
+                        </div>
+                        <div class="card-body" style="overflow-y: auto">
+                            <h4 class="card-title">@item.Name</h4>
+                            <p class="card-text">Country: @item.Country</p>
+                            <p class="card-text">Technology: @item.Technology</p>
+                            <p class="card-text">Phone: @item.Phone</p>
+                        </div>
+                        <div class="card-footer" style="background: inherit; border-color: inherit;">
+                            <a asp-action="GetDetail" class="btn btn-primary" asp-route-id="@item.Id">Details</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+</body>
+</html>
